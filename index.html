@@ -185,6 +185,128 @@ h1 em { font-style: italic; font-weight: 400; display: block; margin-top: .15em;
   gap: .55rem;
   margin-bottom: 1.5rem;
 }
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  margin-bottom: 1.5rem;
+}
+.pillar {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: .9rem 1rem 1rem 1.15rem;
+  position: relative;
+  overflow: hidden;
+}
+.pillar::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--ink-mute);
+}
+.pillar:nth-child(1)::before { background: var(--sage); }
+.pillar:nth-child(2)::before { background: #4a6e88; }
+.pillar:nth-child(3)::before { background: var(--rust); }
+.pillar:nth-child(4)::before { background: var(--gold); }
+.pillar-head {
+  display: flex;
+  align-items: baseline;
+  gap: .55rem;
+  margin-bottom: .35rem;
+  flex-wrap: wrap;
+}
+.pillar-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  color: var(--ink-mute);
+  font-weight: 600;
+}
+.pillar-name {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: -.012em;
+  flex: 1;
+}
+.pillar-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .55rem;
+  letter-spacing: .08em;
+  color: var(--rust);
+  background: rgba(184,92,58,.14);
+  padding: .15rem .45rem;
+  border-radius: 4px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pillar-purpose {
+  font-family: "Noto Serif TC", serif;
+  font-size: .8rem;
+  color: var(--ink-soft);
+  margin-bottom: .65rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+.pillar-purpose::before {
+  content: "為了 — ";
+  font-style: normal;
+  color: var(--rust);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  font-weight: 700;
+  margin-right: .15rem;
+}
+.pillar-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+.pillar-list li {
+  font-size: .82rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  display: flex;
+  align-items: baseline;
+  gap: .55rem;
+}
+.pillar-tag-time, .pillar-tag-opt {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: .15rem .4rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+  min-width: 36px;
+  text-align: center;
+}
+.pillar-tag-time {
+  color: var(--gold);
+  background: rgba(168,133,74,.14);
+}
+.pillar-tag-opt {
+  color: var(--ink-mute);
+  background: var(--bg-soft);
+}
+.pillar-list .accent { font-weight: 700; }
+.pillar-list .accent-vc { color: var(--gold); }
+.pillar-list .accent-rust { color: var(--rust); }
+.pillar-list .accent-aha { color: var(--sage); }
+.pillar-foot {
+  margin-top: .55rem;
+  padding-top: .5rem;
+  border-top: 1px dashed var(--line);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem;
+  color: var(--ink-mute);
+  letter-spacing: .08em;
+  text-align: center;
+}
 .flow-col {
   border-radius: 12px;
   padding: .9rem .7rem;
@@ -689,6 +811,13 @@ h1 em { font-style: italic; font-weight: 400; display: block; margin-top: .15em;
   align-items: center;
   justify-content: center;
   transition: all .2s;
+  position: relative;
+  z-index: 2;
+}
+.checkbox::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
 }
 .item.done .checkbox { background: var(--rust); border-color: var(--rust); }
 .item.done .checkbox::after {
@@ -875,26 +1004,59 @@ footer span {
   <div class="poster-eyebrow">AT A GLANCE</div>
   <div class="poster-title">一張圖看懂<em>整套保養</em></div>
 
-  <div class="flow">
-    <div class="flow-col flow-am">
-      <div class="flow-time">AM</div>
-      <div class="flow-tag">EVERY DAY</div>
-      <div class="flow-step"><span class="flow-num">01</span><span class="flow-text">CosRx 洗面乳</span></div>
-      <div class="flow-step"><span class="flow-num">02</span><span class="flow-text">Maelove <span class="accent accent-vc">Vit C</span></span></div>
-      <div class="flow-step"><span class="flow-num">03</span><span class="flow-text">CeraVe 眼霜</span></div>
-      <div class="flow-step"><span class="flow-num">04</span><span class="flow-text">LRP 多容安乳液</span></div>
-      <div class="flow-step"><span class="flow-num">05</span><span class="flow-text">Biore <span class="accent accent-rust">防曬</span></span></div>
-      <div class="flow-step"><span class="flow-num">06</span><span class="flow-text">Cicaplast 唇膏</span></div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">01</span>
+        <h3 class="pillar-name">清潔 / Cleanse</h3>
+      </div>
+      <p class="pillar-purpose">弱酸洗淨・不破壞屏障</p>
+      <ul class="pillar-list">
+        <li><span class="pillar-tag-time">臉</span> CosRx 弱酸洗面乳（早晚）</li>
+        <li><span class="pillar-tag-time">身</span> LRP Lipikar 醫學級沐浴乳</li>
+      </ul>
     </div>
-    <div class="flow-col flow-pm">
-      <div class="flow-time">PM</div>
-      <div class="flow-tag">隔晚輪用</div>
-      <div class="flow-step"><span class="flow-num">01</span><span class="flow-text">CosRx 洗面乳</span></div>
-      <div class="flow-step flow-step-wait"><span class="flow-num">—</span><span class="flow-text">臉乾透 5–10 分</span></div>
-      <div class="flow-step"><span class="flow-num">02</span><span class="flow-text"><span class="accent accent-rust">Differin</span> 或 <span class="accent accent-aha">杏仁酸</span></span></div>
-      <div class="flow-step"><span class="flow-num">03</span><span class="flow-text">Multi-Peptide 眼精華</span></div>
-      <div class="flow-step"><span class="flow-num">04</span><span class="flow-text">CeraVe 修護乳</span></div>
-      <div class="flow-step"><span class="flow-num">05</span><span class="flow-text">唇膏 + 身體乳</span></div>
+
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">02</span>
+        <h3 class="pillar-name">保濕 / Moisturize</h3>
+      </div>
+      <p class="pillar-purpose">屏障修護・鎖水</p>
+      <ul class="pillar-list">
+        <li><span class="pillar-tag-time">AM</span> LRP 多容安舒緩乳液</li>
+        <li><span class="pillar-tag-time">PM</span> CeraVe 全效修護乳（臉 + 全身）</li>
+        <li><span class="pillar-tag-time">全日</span> Cicaplast 唇膏</li>
+        <li><span class="pillar-tag-opt">選</span> CeraVe Eye Repair 眼霜</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">03</span>
+        <h3 class="pillar-name">精華 / Actives</h3>
+        <span class="pillar-tag">ROI 最高</span>
+      </div>
+      <p class="pillar-purpose">抗氧化・代謝粉刺・淡化 PIH</p>
+      <ul class="pillar-list">
+        <li><span class="pillar-tag-time">AM</span> Maelove <span class="accent accent-vc">Vit C</span></li>
+        <li><span class="pillar-tag-time">PM</span> <span class="accent accent-rust">Differin</span>（一三五）/ <span class="accent accent-aha">杏仁酸</span>（二四六）</li>
+        <li><span class="pillar-tag-opt">選</span> The Ordinary Multi-Peptide 眼精華</li>
+      </ul>
+    </div>
+
+    <div class="pillar">
+      <div class="pillar-head">
+        <span class="pillar-num">04</span>
+        <h3 class="pillar-name">防曬 / Sun</h3>
+        <span class="pillar-tag">沒補擦等於沒擦</span>
+      </div>
+      <p class="pillar-purpose">預防光老化・抗 UVA</p>
+      <ul class="pillar-list">
+        <li><span class="pillar-tag-time">日常</span> Biore 含水防曬</li>
+        <li><span class="pillar-tag-time">強效</span> LRP UVMune 400</li>
+      </ul>
+      <p class="pillar-foot">依場景二選一</p>
     </div>
   </div>
 
