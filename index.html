@@ -768,6 +768,52 @@ h1 em { font-style: italic; font-weight: 400; display: block; margin-top: .15em;
   margin: 0 .3rem .3rem 0;
   border: 1px solid var(--line);
 }
+.group-switch {
+  display: flex;
+  gap: .25rem;
+  margin: 0 1.25rem 1.25rem;
+  padding: .25rem;
+  background: var(--bg-soft);
+  border-radius: 100px;
+}
+.group-btn {
+  flex: 1;
+  padding: .55rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all .25s;
+  font-weight: 600;
+}
+.group-btn.active {
+  background: var(--bg-card);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+.item-badge {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .55rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding: .15rem .4rem;
+  border-radius: 4px;
+  background: var(--bg-soft);
+  color: var(--ink-mute);
+  margin-left: .5rem;
+  vertical-align: 2px;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+.item-badge.alt { background: rgba(168,133,74,.18); color: var(--gold); }
+.item-wrap.optional .item:not(.done) .item-name { color: var(--ink-mid); font-weight: 400; }
+.item-wrap.optional .item:not(.done) .item-thumb { opacity: .75; }
+.item-wrap.optional .item:not(.done) .item-price { opacity: .8; }
 .view { display: none; }
 .view.active { display: block; }
 @keyframes fadeUp {
@@ -1029,12 +1075,12 @@ footer span {
     <div class="stat-label">品項</div>
   </div>
   <div class="stat">
-    <span class="stat-num">8.5K</span>
+    <span class="stat-num">≤8.2K</span>
     <div class="stat-label">總額 NT$</div>
   </div>
   <div class="stat">
-    <span class="stat-num">4</span>
-    <div class="stat-label">分類</div>
+    <span class="stat-num" id="groupCount">4</span>
+    <div class="stat-label" id="groupLabel">分類</div>
   </div>
 </div>
 
@@ -1054,250 +1100,12 @@ footer span {
     <h2>採購清單</h2>
   </div>
 
-  <!-- 清潔 -->
-  <div class="batch" data-batch="cleanse">
-    <div class="batch-header">
-      <span class="batch-num">01</span>
-      <div class="batch-info">
-        <div class="batch-title">清潔・Cleanse</div>
-        <div class="batch-channel">洗面乳 + 沐浴乳</div>
-      </div>
-      <div class="batch-total">NT$1,289</div>
-    </div>
-    <div class="items">
-      <div class="item-wrap">
-        <div class="item" data-id="8">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/01-cosrx-low-ph-cleanser.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">CosRx Low pH Cleanser ×2</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">150ml × 2 · 早晚通用 · iHerb</span><span class="item-price">NT$660</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：早晚通用洗面乳。<strong>pH 5.5 弱酸性</strong>、含微量 BHA + 茶樹油。</p>
-          <p><strong>取代</strong>：CeraVe 雙瓶系統，一條搞定。</p>
-          <p><strong>買兩條</strong>：iHerb 湊免運門檻、備庫存可用 4 個月。</p>
-          <p><span class="detail-tag">弱酸 pH 5.5</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="3">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/14-lrp-lipikar-syndet-apm.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">LRP Lipikar Syndet AP+ 沐浴乳</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">400ml · 醫學級 · 蝦皮巴黎丁</span><span class="item-price">NT$629</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：<em>敏感肌、濕疹預防最關鍵單品</em>。一般沐浴乳清潔力過強會誘發屏障受損。</p>
-          <p><strong>使用</strong>：每日全身洗。水溫 ≤ 37°C，洗澡時間 ≤ 8 分鐘。洗完<em>3 分鐘內</em>立刻塗身體乳。</p>
-          <p><span class="detail-tag">NEA 認證</span><span class="detail-tag">含菸鹼醯胺</span></p>
-        </div></div>
-      </div>
-    </div>
+  <div class="group-switch" id="groupSwitch">
+    <button class="group-btn active" data-group="category">按種類</button>
+    <button class="group-btn" data-group="store">按商城</button>
   </div>
 
-  <!-- 保濕 -->
-  <div class="batch" data-batch="moisture">
-    <div class="batch-header">
-      <span class="batch-num">02</span>
-      <div class="batch-info">
-        <div class="batch-title">保濕・Moisturize</div>
-        <div class="batch-channel">乳液 + 眼霜 + 唇膏</div>
-      </div>
-      <div class="batch-total">NT$2,018</div>
-    </div>
-    <div class="items">
-      <div class="item-wrap">
-        <div class="item" data-id="2">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/05-lrp-toleriane-lotion.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">LRP 多容安舒緩濕潤乳液</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">40ml · AM 乳液 · 蝦皮巴黎丁</span><span class="item-price">NT$619</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：早上保濕主力。含<strong>菸鹼醯胺 + 神經醯胺 NP</strong>，質地清爽<em>不影響防曬延展與上妝</em>。</p>
-          <p><strong>使用</strong>：Vit C 後等 90 秒再上。一元硬幣量、T 字減半。</p>
-          <p><span class="detail-tag">敏感肌</span><span class="detail-tag">含菸鹼醯胺</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="4">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/12-cerave-daily-lotion-pump.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">CeraVe 長效清爽保濕乳</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">473ml · PM 臉 + 全身 · momo</span><span class="item-price">NT$595</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：PM 臉部 + 全身日常保濕。含<strong>三神經醯胺 + HA</strong>，無香、好推開、台灣濕熱不悶。</p>
-          <p><strong>使用</strong>：洗澡後 3 分鐘內擦全身。<em>乾燥部位可加厚塗</em>。</p>
-          <p><strong>備註</strong>：用量大者可考慮 Costco 雙入裝（562ml × 2）更划算。</p>
-          <p><span class="detail-tag">三神經醯胺</span><span class="detail-tag">無香</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="5">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/10-cerave-eye-repair-cream.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">CeraVe Eye Repair Cream 眼霜</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">14ml · AM 眼霜 · momo</span><span class="item-price">NT$535</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：含<strong>菸鹼醯胺 + 三神經醯胺</strong>，主攻<em>強化薄皮屏障</em>——這是血管型黑眼圈唯一能改善的部分。</p>
-          <p><strong>使用</strong>：AM 上 Vit C 後、乳液前。米粒量。</p>
-          <p><strong>預期</strong>：保養品對血管型黑眼圈頂多視覺改善 10–25%，<em>不能根治</em>。</p>
-          <p><span class="detail-tag">含菸鹼醯胺</span><span class="detail-tag">薄皮修護</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="1">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/08-lrp-cicaplast-levres.png" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">LRP Cicaplast Lèvres 唇膏</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">7.5ml · 唇部修護 · 蝦皮巴黎丁</span><span class="item-price">NT$269</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：含 5% 泛醇 + 雪亞脂的醫療級無香唇膏，<em>修護下唇乾裂、縱紋</em>。</p>
-          <p><strong>使用</strong>：日夜皆可。AM 防曬後最後一步、PM 保養收尾、白天乾燥隨時補。</p>
-          <p><span class="detail-tag">無香</span><span class="detail-tag">無酒精</span></p>
-        </div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 精華 -->
-  <div class="batch" data-batch="actives">
-    <div class="batch-header">
-      <span class="batch-num">03</span>
-      <div class="batch-info">
-        <div class="batch-title">精華・Actives</div>
-        <div class="batch-channel">VC + A 酸 + 杏仁酸 + 眼精華</div>
-      </div>
-      <div class="batch-total">NT$3,620</div>
-    </div>
-    <div class="items">
-      <div class="item-wrap">
-        <div class="item" data-id="11">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/02-maelove-glow-maker.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">Maelove Glow Maker</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">30ml · 15% Vit C · Amazon US</span><span class="item-price">NT$1,400</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：<strong>15% L-AA + 1% VE + 0.5% 阿魏酸</strong>，配方等同 SkinCeuticals C E Ferulic 但<em>只要四分之一價</em>。</p>
-          <p><strong>使用</strong>：AM 洗臉後第一支精華。3–4 滴薄推全臉。等 90 秒再上眼霜與乳液。</p>
-          <p><strong>採購</strong>：Amazon US 直送台灣，運費約 USD$10、海運 7–14 天到貨。<em>單買不超過 USD$50 免關稅</em>。</p>
-          <p><strong>保存</strong>：開封後 3–4 個月用完，瓶身變橘黃色丟掉。冷藏可延至 6 個月。</p>
-          <p><span class="detail-tag">15% L-AA</span><span class="detail-tag">阿魏酸</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="9">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/03-differin-adapalene.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">Differin Adapalene 0.1% Gel</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">45g · PM·一三五 · iHerb</span><span class="item-price">NT$680</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：第三代 A 酸，<em>對閉鎖性粉刺與 PIH 痘印雙效實證最強</em>。整套保養中 ROI 最高的單品。</p>
-          <p><strong>使用</strong>：PM·A 夜（一三五）。臉乾透 5–10 分鐘後米粒量點塗，避眼周 1 cm。</p>
-          <p><strong>過渡期</strong>：前 2–4 週可能有微脫屑（retinization），保濕厚塗即可。</p>
-          <p><span class="detail-tag">隔晚輪用</span><span class="detail-tag">PIH 主攻</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="6">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/04-ordinary-mandelic-acid.png" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">The Ordinary Mandelic Acid 10% + HA</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">30ml · PM·二四六 · momo</span><span class="item-price">NT$390</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：AHA 化學去角質，<em>淡化痘印、改善鼻頭皮脂絲</em>。分子量 152 Da、滲透慢，亞洲膚質耐受度佳。</p>
-          <p><strong>使用</strong>：PM·B 夜（二四六）。2 滴薄推全臉，等 15–20 分鐘再上保濕。</p>
-          <p><strong>絕對禁忌</strong>：<em>不可與 Differin 同晚使用</em>。</p>
-          <p><span class="detail-tag">隔晚輪用</span><span class="detail-tag">PIH 淡化</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="7">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/11-ordinary-multi-peptide-eye-serum.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">The Ordinary Multi-Peptide Eye Serum</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">15ml · PM 眼精華 · momo</span><span class="item-price">NT$1,150</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>用途</strong>：<strong>多胜肽 + 咖啡因 + EGCG + 菸鹼醯胺</strong>全方位配方，長期增厚眼周薄皮、消淺層浮腫。</p>
-          <p><strong>使用</strong>：PM 用，乳霜前。無名指輕點。</p>
-          <p><span class="detail-tag">胜肽</span><span class="detail-tag">咖啡因</span></p>
-        </div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 防曬 -->
-  <div class="batch" data-batch="sun">
-    <div class="batch-header">
-      <span class="batch-num">04</span>
-      <div class="batch-info">
-        <div class="batch-title">防曬・Sun</div>
-        <div class="batch-channel">日常 + 強效雙層配置</div>
-      </div>
-      <div class="batch-total">NT$1,609</div>
-    </div>
-    <div class="items">
-      <div class="item-wrap">
-        <div class="item" data-id="12">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/16-biore-uv-aqua-rich.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">Biore 含水防曬舒芙蕾霜</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">70g · 日常用 · SPF50+ PA++++</span><span class="item-price">NT$359</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>適用</strong>：<em>日常通勤、室內、短時間戶外</em>。日系防曬代表作，蓬鬆水感、不黏，台灣濕熱適用。</p>
-          <p><strong>使用</strong>：AM 最後一步。兩指長量。外出每 3 小時補擦。</p>
-          <p><span class="detail-tag">水感</span><span class="detail-tag">不黏</span></p>
-        </div></div>
-      </div>
-      <div class="item-wrap">
-        <div class="item" data-id="13">
-          <div class="checkbox"></div>
-          <div class="item-thumb"><img src="images/07-lrp-uvmune-400-oil-control.jpg" alt="" loading="lazy"></div>
-          <div class="item-content">
-            <div class="item-row"><div class="item-name">LRP Anthelios UVMune 400</div><span class="item-toggle">+</span></div>
-            <div class="item-meta"><span class="item-spec">50ml · 強效 · SPF50+ PA++++</span><span class="item-price">NT$1,250</span></div>
-          </div>
-        </div>
-        <div class="item-detail"><div class="item-detail-inner">
-          <p><strong>適用</strong>：<em>長時間戶外、海邊、運動、騎車、爬山</em>。<strong>長波 UVA 防護領先業界</strong>，是抗光老化、抗曬斑的金標準。</p>
-          <p><strong>使用</strong>：AM 最後一步。兩指長量。戶外每 2 小時補擦。</p>
-          <p><strong>關鍵</strong>：Vit C + Differin + 杏仁酸都會增加 UV 敏感，沒補擦等於沒擦。</p>
-          <p><span class="detail-tag">UVA 強效</span><span class="detail-tag">抗光老化</span></p>
-        </div></div>
-      </div>
-    </div>
-  </div>
-
+  <div id="shopList"></div>
 </div>
 
 <div class="reset-section">
@@ -1324,40 +1132,215 @@ function saveState(state) {
 
 let state = loadState();
 
+const products = [
+  { id: 1, name: 'LRP Cicaplast Lèvres 唇膏', spec: '7.5ml · 唇部修護',
+    store: 'shopee', price: 269, image: 'images/08-lrp-cicaplast-levres.png',
+    category: 'moisture',
+    detailHtml: `<p><strong>用途</strong>：含 5% 泛醇 + 雪亞脂的醫療級無香唇膏，<em>修護下唇乾裂、縱紋</em>。</p>
+<p><strong>使用</strong>：日夜皆可。AM 防曬後最後一步、PM 保養收尾、白天乾燥隨時補。</p>
+<p><span class="detail-tag">無香</span><span class="detail-tag">無酒精</span></p>` },
+  { id: 2, name: 'LRP 多容安舒緩濕潤乳液', spec: '40ml · AM 乳液',
+    store: 'shopee', price: 619, image: 'images/05-lrp-toleriane-lotion.jpg',
+    category: 'moisture',
+    detailHtml: `<p><strong>用途</strong>：早上保濕主力。含<strong>菸鹼醯胺 + 神經醯胺 NP</strong>，質地清爽<em>不影響防曬延展與上妝</em>。</p>
+<p><strong>使用</strong>：Vit C 後等 90 秒再上。一元硬幣量、T 字減半。</p>
+<p><span class="detail-tag">敏感肌</span><span class="detail-tag">含菸鹼醯胺</span></p>` },
+  { id: 3, name: 'LRP Lipikar Syndet AP+ 沐浴乳', spec: '400ml · 醫學級',
+    store: 'shopee', price: 629, image: 'images/14-lrp-lipikar-syndet-apm.jpg',
+    category: 'cleanse',
+    detailHtml: `<p><strong>用途</strong>：<em>敏感肌、濕疹預防最關鍵單品</em>。一般沐浴乳清潔力過強會誘發屏障受損。</p>
+<p><strong>使用</strong>：每日全身洗。水溫 ≤ 37°C，洗澡時間 ≤ 8 分鐘。洗完<em>3 分鐘內</em>立刻塗身體乳。</p>
+<p><span class="detail-tag">NEA 認證</span><span class="detail-tag">含菸鹼醯胺</span></p>` },
+  { id: 4, name: 'CeraVe 長效清爽保濕乳', spec: '473ml · PM 臉 + 全身',
+    store: 'momo', price: 595, image: 'images/12-cerave-daily-lotion-pump.jpg',
+    category: 'moisture',
+    detailHtml: `<p><strong>用途</strong>：PM 臉部 + 全身日常保濕。含<strong>三神經醯胺 + HA</strong>，無香、好推開、台灣濕熱不悶。</p>
+<p><strong>使用</strong>：洗澡後 3 分鐘內擦全身。<em>乾燥部位可加厚塗</em>。</p>
+<p><strong>備註</strong>：用量大者可考慮 Costco 雙入裝（562ml × 2）更划算。</p>
+<p><span class="detail-tag">三神經醯胺</span><span class="detail-tag">無香</span></p>` },
+  { id: 5, name: 'CeraVe Eye Repair Cream 眼霜', spec: '14ml · AM 眼霜',
+    store: 'momo', price: 535, image: 'images/10-cerave-eye-repair-cream.jpg',
+    category: 'moisture', optional: true,
+    detailHtml: `<p><strong>用途</strong>：含<strong>菸鹼醯胺 + 三神經醯胺</strong>，主攻<em>強化薄皮屏障</em>——血管型黑眼圈唯一能改善的部分。</p>
+<p><strong>使用</strong>：AM 上 Vit C 後、乳液前。米粒量。</p>
+<p><strong>選用</strong>：眼周乾紋、薄皮、黑眼圈困擾者再加。一般日常乳液上眼下也夠。</p>
+<p><span class="detail-tag">含菸鹼醯胺</span><span class="detail-tag">薄皮修護</span></p>` },
+  { id: 6, name: 'The Ordinary Mandelic Acid 10% + HA', spec: '30ml · PM·二四六',
+    store: 'momo', price: 390, image: 'images/04-ordinary-mandelic-acid.png',
+    category: 'actives',
+    detailHtml: `<p><strong>用途</strong>：AHA 化學去角質，<em>淡化痘印、改善鼻頭皮脂絲</em>。分子量 152 Da、滲透慢，亞洲膚質耐受度佳。</p>
+<p><strong>使用</strong>：PM·B 夜（二四六）。2 滴薄推全臉，等 15–20 分鐘再上保濕。</p>
+<p><strong>絕對禁忌</strong>：<em>不可與 Differin 同晚使用</em>。</p>
+<p><span class="detail-tag">隔晚輪用</span><span class="detail-tag">PIH 淡化</span></p>` },
+  { id: 7, name: 'The Ordinary Multi-Peptide Eye Serum', spec: '15ml · PM 眼精華',
+    store: 'momo', price: 1150, image: 'images/11-ordinary-multi-peptide-eye-serum.jpg',
+    category: 'actives', optional: true,
+    detailHtml: `<p><strong>用途</strong>：<strong>多胜肽 + 咖啡因 + EGCG + 菸鹼醯胺</strong>全方位配方，長期增厚眼周薄皮、消淺層浮腫。</p>
+<p><strong>使用</strong>：PM 用，乳霜前。無名指輕點。</p>
+<p><strong>選用</strong>：眼周保養進階；首要預算可先省。</p>
+<p><span class="detail-tag">胜肽</span><span class="detail-tag">咖啡因</span></p>` },
+  { id: 8, name: 'CosRx Low pH Cleanser', spec: '150ml · 早晚通用',
+    store: 'iherb', price: 330, image: 'images/01-cosrx-low-ph-cleanser.jpg',
+    category: 'cleanse',
+    detailHtml: `<p><strong>用途</strong>：早晚通用洗面乳。<strong>pH 5.5 弱酸性</strong>、含微量 BHA + 茶樹油。</p>
+<p><strong>替代</strong>：可取代 CeraVe 雙瓶系統，一條搞定。</p>
+<p><span class="detail-tag">弱酸 pH 5.5</span></p>` },
+  { id: 9, name: 'Differin Adapalene 0.1% Gel', spec: '45g · PM·一三五',
+    store: 'iherb', price: 680, image: 'images/03-differin-adapalene.jpg',
+    category: 'actives',
+    detailHtml: `<p><strong>用途</strong>：第三代 A 酸，<em>對閉鎖性粉刺與 PIH 痘印雙效實證最強</em>。整套保養中 ROI 最高的單品。</p>
+<p><strong>使用</strong>：PM·A 夜（一三五）。臉乾透 5–10 分鐘後米粒量點塗，避眼周 1 cm。</p>
+<p><strong>過渡期</strong>：前 2–4 週可能有微脫屑（retinization），保濕厚塗即可。</p>
+<p><span class="detail-tag">隔晚輪用</span><span class="detail-tag">PIH 主攻</span></p>` },
+  { id: 11, name: 'Maelove Glow Maker', spec: '30ml · 15% Vit C',
+    store: 'amazon', price: 1400, image: 'images/02-maelove-glow-maker.jpg',
+    category: 'actives',
+    detailHtml: `<p><strong>用途</strong>：<strong>15% L-AA + 1% VE + 0.5% 阿魏酸</strong>，配方等同 SkinCeuticals C E Ferulic 但<em>只要四分之一價</em>。</p>
+<p><strong>使用</strong>：AM 洗臉後第一支精華。3–4 滴薄推全臉。等 90 秒再上眼霜與乳液。</p>
+<p><strong>採購</strong>：Amazon US 直送台灣，運費約 USD$10、海運 7–14 天到貨。<em>單買不超過 USD$50 免關稅</em>。</p>
+<p><strong>保存</strong>：開封後 3–4 個月用完，瓶身變橘黃色丟掉。冷藏可延至 6 個月。</p>
+<p><span class="detail-tag">15% L-AA</span><span class="detail-tag">阿魏酸</span></p>` },
+  { id: 12, name: 'Biore 含水防曬舒芙蕾霜', spec: '70g · 日常用 · SPF50+ PA++++',
+    store: 'watson', price: 359, image: 'images/16-biore-uv-aqua-rich.jpg',
+    category: 'sun', altOf: 13,
+    detailHtml: `<p><strong>適用</strong>：<em>日常通勤、室內、短時間戶外</em>。日系防曬代表作，蓬鬆水感、不黏，台灣濕熱適用。</p>
+<p><strong>使用</strong>：AM 最後一步。兩指長量。外出每 3 小時補擦。</p>
+<p><span class="detail-tag">水感</span><span class="detail-tag">不黏</span></p>` },
+  { id: 13, name: 'LRP Anthelios UVMune 400', spec: '50ml · 強效 · SPF50+ PA++++',
+    store: 'watson', price: 1250, image: 'images/07-lrp-uvmune-400-oil-control.jpg',
+    category: 'sun', altOf: 12,
+    detailHtml: `<p><strong>適用</strong>：<em>長時間戶外、海邊、運動、騎車、爬山</em>。<strong>長波 UVA 防護領先業界</strong>，是抗光老化、抗曬斑的金標準。</p>
+<p><strong>使用</strong>：AM 最後一步。兩指長量。戶外每 2 小時補擦。</p>
+<p><strong>關鍵</strong>：Vit C + Differin + 杏仁酸都會增加 UV 敏感，沒補擦等於沒擦。</p>
+<p><span class="detail-tag">UVA 強效</span><span class="detail-tag">抗光老化</span></p>` }
+];
+
+const groupings = {
+  category: {
+    field: 'category',
+    label: '分類',
+    groups: [
+      { key: 'cleanse',  num: '01', title: '清潔・Cleanse',     channel: '洗面乳 + 沐浴乳' },
+      { key: 'moisture', num: '02', title: '保濕・Moisturize',  channel: '乳液 + 眼霜 + 唇膏' },
+      { key: 'actives',  num: '03', title: '精華・Actives',     channel: 'VC + A 酸 + 杏仁酸 + 眼精華' },
+      { key: 'sun',      num: '04', title: '防曬・Sun',         channel: '依場景二選一' }
+    ]
+  },
+  store: {
+    field: 'store',
+    label: '通路',
+    groups: [
+      { key: 'shopee', num: '01', title: '蝦皮商城・巴黎丁', channel: 'SHOPEE · 法國直送水貨' },
+      { key: 'momo',   num: '02', title: 'momo 購物網',       channel: '一單買齊主力' },
+      { key: 'iherb',  num: '03', title: 'iHerb',              channel: '活性成分 + 洗面乳' },
+      { key: 'amazon', num: '04', title: 'Amazon US',          channel: '直送台灣' },
+      { key: 'watson', num: '05', title: '屈臣氏 / 開架',      channel: '防曬・即取即用' }
+    ]
+  }
+};
+
+let currentMode = 'category';
+
+function fmtPrice(n) { return 'NT$' + n.toLocaleString(); }
+
+function itemHtml(p) {
+  let badge = '';
+  if (p.altOf)        badge = '<span class="item-badge alt">二選一</span>';
+  else if (p.optional) badge = '<span class="item-badge">選用</span>';
+  const optClass = (p.optional || p.altOf) ? ' optional' : '';
+  return `
+    <div class="item-wrap${optClass}">
+      <div class="item" data-id="${p.id}">
+        <div class="checkbox"></div>
+        <div class="item-thumb"><img src="${p.image}" alt="" loading="lazy"></div>
+        <div class="item-content">
+          <div class="item-row"><div class="item-name">${p.name}${badge}</div><span class="item-toggle">+</span></div>
+          <div class="item-meta"><span class="item-spec">${p.spec}</span><span class="item-price">${fmtPrice(p.price)}</span></div>
+        </div>
+      </div>
+      <div class="item-detail"><div class="item-detail-inner">${p.detailHtml}</div></div>
+    </div>
+  `;
+}
+
+function renderShop(mode) {
+  const cfg = groupings[mode];
+  const list = document.getElementById('shopList');
+  const html = cfg.groups.map(g => {
+    const items = products.filter(p => p[cfg.field] === g.key);
+    if (!items.length) return '';
+    const total = items.reduce((s, p) => s + p.price, 0);
+    const allAlt = items.length > 1 && items.every(p => p.altOf);
+    const totalLabel = allAlt ? '二選一' : fmtPrice(total);
+    return `
+      <div class="batch" data-batch="${g.key}">
+        <div class="batch-header">
+          <span class="batch-num">${g.num}</span>
+          <div class="batch-info">
+            <div class="batch-title">${g.title}</div>
+            <div class="batch-channel">${g.channel}</div>
+          </div>
+          <div class="batch-total">${totalLabel}</div>
+        </div>
+        <div class="items">${items.map(itemHtml).join('')}</div>
+      </div>
+    `;
+  }).join('');
+  list.innerHTML = html;
+  document.getElementById('groupCount').textContent = cfg.groups.length;
+  document.getElementById('groupLabel').textContent = cfg.label;
+  bindItemHandlers();
+  applyState();
+}
+
+function bindItemHandlers() {
+  document.querySelectorAll('#shopList .item[data-id]').forEach(item => {
+    const checkbox = item.querySelector('.checkbox');
+    checkbox.addEventListener('click', e => {
+      e.stopPropagation();
+      const id = item.dataset.id;
+      state[id] = !state[id];
+      saveState(state);
+      applyState();
+    });
+    item.addEventListener('click', () => {
+      const wrap = item.closest('.item-wrap');
+      const expanded = wrap.classList.toggle('expanded');
+      item.classList.toggle('expanded', expanded);
+    });
+  });
+}
+
 function applyState() {
-  const items = document.querySelectorAll('.item[data-id]');
+  const items = document.querySelectorAll('#shopList .item[data-id]');
   items.forEach(item => {
     const id = item.dataset.id;
     if (state[id]) item.classList.add('done');
     else item.classList.remove('done');
   });
-  document.querySelectorAll('.batch').forEach(batch => {
+  document.querySelectorAll('#shopList .batch').forEach(batch => {
     const allItems = batch.querySelectorAll('.item[data-id]');
     const allDone = Array.from(allItems).every(it => state[it.dataset.id]);
     if (allDone && allItems.length > 0) batch.classList.add('completed');
     else batch.classList.remove('completed');
   });
   const total = items.length;
-  const done = Object.values(state).filter(v => v).length;
+  const validIds = new Set(Array.from(items).map(it => it.dataset.id));
+  const done = Object.keys(state).filter(k => state[k] && validIds.has(k)).length;
   const pct = total > 0 ? Math.round((done / total) * 100) : 0;
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('progressPct').textContent = pct + '%';
   document.getElementById('totalCount').textContent = `${done}/${total}`;
 }
 
-document.querySelectorAll('.item[data-id]').forEach(item => {
-  const checkbox = item.querySelector('.checkbox');
-  checkbox.addEventListener('click', e => {
-    e.stopPropagation();
-    const id = item.dataset.id;
-    state[id] = !state[id];
-    saveState(state);
-    applyState();
-  });
-  item.addEventListener('click', () => {
-    const wrap = item.closest('.item-wrap');
-    const expanded = wrap.classList.toggle('expanded');
-    item.classList.toggle('expanded', expanded);
+document.querySelectorAll('.group-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const mode = btn.dataset.group;
+    if (mode === currentMode) return;
+    document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentMode = mode;
+    renderShop(mode);
   });
 });
 
@@ -1379,7 +1362,7 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   }
 });
 
-applyState();
+renderShop(currentMode);
 </script>
 
 </body>
