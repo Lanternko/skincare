@@ -981,6 +981,119 @@ footer span {
   color: var(--ink-soft);
   margin-top: .5rem;
 }
+
+/* ============ TABLET (≥768px) ============ */
+@media (min-width: 768px) {
+  html { font-size: 16px; }
+  body {
+    max-width: 1320px;
+    margin: 0 auto;
+    background-color: var(--bg) !important;
+    box-shadow: 0 0 0 1px var(--line-soft), 0 30px 80px -30px rgba(26,26,26,.08);
+  }
+  .hero {
+    padding: 4rem 3rem 2.5rem;
+  }
+  .hero p { max-width: 48ch; font-size: 1rem; }
+  .tabs { padding: .85rem 2rem; }
+  .tab { font-size: .75rem; padding: .8rem 1rem; }
+  .section { padding: 2.5rem 3rem 0; }
+  .poster { margin: 2rem 3rem 0; padding: 2rem 1.75rem; }
+  .stats, .progress-wrap { margin-left: 3rem; margin-right: 3rem; }
+  .reset-section { margin-top: 3rem; }
+
+  /* poster: pillars 2x2 */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* poster: ingredients 2 cols */
+  .ingredients {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .55rem;
+  }
+
+  /* targets 4 across */
+  .targets { grid-template-columns: repeat(4, 1fr); }
+
+  /* item-thumb bigger */
+  .item-thumb { width: 64px; height: 64px; }
+
+  /* sop step thumb a touch bigger */
+  .sop-step-thumb { width: 46px; height: 46px; }
+}
+
+/* ============ DESKTOP (≥1024px) ============ */
+@media (min-width: 1024px) {
+  html { font-size: 17px; }
+
+  .hero { padding: 5rem 4rem 3rem; }
+  h1 { font-size: clamp(3rem, 4.5vw, 4rem); }
+  .hero p { font-size: 1.1rem; max-width: 60ch; }
+
+  .section { padding: 3rem 4rem 0; }
+  .poster { margin: 2.5rem 4rem 0; padding: 2.5rem 2.25rem; }
+  .stats, .progress-wrap { margin-left: 4rem; margin-right: 4rem; }
+  .group-switch { margin: 0 4rem 1.5rem; max-width: 480px; }
+
+  /* shop list 2 columns */
+  #shopList .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  #shopList .item-wrap {
+    border-bottom: 1px solid var(--line-soft);
+  }
+  #shopList .item-wrap:nth-child(odd) {
+    border-right: 1px solid var(--line-soft);
+  }
+  #shopList .item-wrap:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  #shopList .items {
+    border-top: 1px solid var(--line-soft);
+  }
+
+  /* larger thumbs in shop */
+  .item-thumb { width: 80px; height: 80px; }
+
+  /* SOP 3-column layout */
+  #view-sop .section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+  #view-sop .section-head,
+  #view-sop .sop-intro {
+    grid-column: 1 / -1;
+  }
+  .sop-block { margin-bottom: 0; }
+
+  /* Tabs centered */
+  .tabs { justify-content: center; }
+  .tab { flex: 0 1 200px; }
+
+  /* slightly bigger item text */
+  .item-name { font-size: 1rem; }
+  .item-meta { font-size: .78rem; }
+
+  /* progress + stats more spacious */
+  .stat-num { font-size: 1.7rem; }
+  .stat-label { font-size: .68rem; }
+}
+
+/* ============ WIDE DESKTOP (≥1280px) ============ */
+@media (min-width: 1280px) {
+  /* poster: 2-column layout — pillars left, supporting blocks right */
+  .poster .pillars { grid-template-columns: 1fr 1fr; }
+  .ingredients { grid-template-columns: repeat(3, 1fr); }
+}
 </style>
 </head>
 <body>
