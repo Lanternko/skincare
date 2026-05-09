@@ -1347,7 +1347,7 @@ footer span {
 
 <div class="stats">
   <div class="stat">
-    <span class="stat-num" id="totalCount">0/12</span>
+    <span class="stat-num" id="totalCount">0/9</span>
     <div class="stat-label">品項</div>
   </div>
   <div class="stat">
@@ -1587,22 +1587,47 @@ function bindItemHandlers() {
   });
 }
 
+// Progress counts essentials only: optional items skipped, altOf pair = 1 slot (either checked counts).
+function altKey(p) { return p.altOf ? [p.id, p.altOf].sort((a,b)=>a-b).join('-') : String(p.id); }
+function essentialDone(p) {
+  if (p.altOf) return !!(state[p.id] || state[p.altOf]);
+  return !!state[p.id];
+}
+
 function applyState() {
   const items = document.querySelectorAll('#shopList .item[data-id]');
+  const productById = Object.fromEntries(products.map(p => [p.id, p]));
+
   items.forEach(item => {
-    const id = item.dataset.id;
-    if (state[id]) item.classList.add('done');
-    else item.classList.remove('done');
+    item.classList.toggle('done', !!state[item.dataset.id]);
   });
+
   document.querySelectorAll('#shopList .batch').forEach(batch => {
-    const allItems = batch.querySelectorAll('.item[data-id]');
-    const allDone = Array.from(allItems).every(it => state[it.dataset.id]);
-    if (allDone && allItems.length > 0) batch.classList.add('completed');
-    else batch.classList.remove('completed');
+    const seen = new Set();
+    let hasEssential = false;
+    let allDone = true;
+    batch.querySelectorAll('.item[data-id]').forEach(it => {
+      const p = productById[it.dataset.id];
+      if (!p || p.optional) return;
+      const key = altKey(p);
+      if (seen.has(key)) return;
+      seen.add(key);
+      hasEssential = true;
+      if (!essentialDone(p)) allDone = false;
+    });
+    batch.classList.toggle('completed', hasEssential && allDone);
   });
-  const total = items.length;
-  const validIds = new Set(Array.from(items).map(it => it.dataset.id));
-  const done = Object.keys(state).filter(k => state[k] && validIds.has(k)).length;
+
+  const seen = new Set();
+  let total = 0, done = 0;
+  for (const p of products) {
+    if (p.optional) continue;
+    const key = altKey(p);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    total++;
+    if (essentialDone(p)) done++;
+  }
   const pct = total > 0 ? Math.round((done / total) * 100) : 0;
   document.getElementById('progressFill').style.width = pct + '%';
   document.getElementById('progressPct').textContent = pct + '%';
