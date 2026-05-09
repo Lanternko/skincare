@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#faf6ee">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>混合肌保養攻略</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Noto+Serif+TC:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf6ee;
+  --bg-card: #ffffff;
+  --bg-soft: #f2ece0;
+  --bg-warm: #ebe2d0;
+  --ink: #1a1a1a;
+  --ink-mid: #4a4a4a;
+  --ink-soft: #7a7468;
+  --ink-mute: #a39d8e;
+  --line: #e6dfd0;
+  --line-soft: #f0eadb;
+  --rust: #b85c3a;
+  --rust-soft: #d49074;
+  --gold: #a8854a;
+  --sage: #7a8a5e;
+  --night: #1f2426;
+  --done-bg: #d8dec5;
+  --done-ink: #4a5a32;
+  --shadow-sm: 0 1px 2px rgba(26,26,26,.04), 0 1px 3px rgba(26,26,26,.03);
+  --shadow: 0 1px 2px rgba(26,26,26,.04), 0 8px 24px rgba(26,26,26,.06);
+  --radius: 14px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+  color-scheme: light only;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-color-scheme: dark) {
+  :root { color-scheme: light only !important; }
+}
+body {
+  font-family: "Noto Serif TC", "Fraunces", Georgia, serif;
+  background-color: #faf6ee !important;
+  color: #1a1a1a !important;
+  line-height: 1.65;
+  font-feature-settings: "ss01", "ss02";
+  padding: 0 0 4rem;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(at 92% 4%, rgba(184,92,58,.05) 0%, transparent 38%),
+    radial-gradient(at 8% 96%, rgba(168,133,74,.06) 0%, transparent 50%);
+}
+.hero {
+  padding: 3rem 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(184,92,58,.1), transparent 70%);
+  pointer-events: none;
+}
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: .8rem;
+  font-weight: 500;
+}
+h1 {
+  font-family: "Fraunces", serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 8.5vw, 2.9rem);
+  letter-spacing: -.022em;
+  line-height: 1.05;
+}
+h1 strong { font-weight: 600; letter-spacing: -.027em; }
+h1 em { font-style: italic; font-weight: 400; display: block; margin-top: .15em; }
+.hero p { color: var(--ink-soft); font-size: .92rem; margin-top: .85rem; max-width: 30ch; }
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250,246,238,.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  padding: .55rem .75rem;
+  gap: .3rem;
+  border-bottom: 1px solid var(--line);
+}
+.tab {
+  flex: 1;
+  padding: .65rem .35rem;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .25s;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.tab.active { background: var(--ink); color: var(--bg); }
+.section { padding: 1.5rem 1.25rem 0; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: .85rem;
+  border-bottom: 1px solid var(--line);
+}
+.section-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  color: var(--rust);
+  letter-spacing: .12em;
+  font-weight: 500;
+}
+.section-head h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: -.012em;
+  flex: 1;
+}
+
+/* POSTER */
+.poster {
+  margin: 1.5rem 1.25rem 0;
+  background: linear-gradient(180deg, #ffffff 0%, #fcf9f1 100%);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.1rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.poster::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--rust), var(--sage));
+}
+.poster-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .65rem;
+  letter-spacing: .2em;
+  color: var(--rust);
+  margin-bottom: .35rem;
+}
+.poster-title {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: -.015em;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+.poster-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--rust);
+}
+.flow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .55rem;
+  margin-bottom: 1.5rem;
+}
+.flow-col {
+  border-radius: 12px;
+  padding: .9rem .7rem;
+}
+.flow-am { background: linear-gradient(165deg, #fef6e4 0%, #f9ecd0 100%); }
+.flow-pm { background: linear-gradient(165deg, #2a2f3a 0%, #1f2426 100%); color: #f5f0e6; }
+.flow-time {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: .15rem;
+}
+.flow-am .flow-time { color: var(--gold); }
+.flow-pm .flow-time { color: var(--rust-soft); }
+.flow-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .58rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.flow-am .flow-tag { color: var(--gold); }
+.flow-pm .flow-tag { color: var(--rust-soft); }
+.flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: .45rem;
+  margin-bottom: .55rem;
+  font-size: .76rem;
+  line-height: 1.4;
+}
+.flow-step:last-child { margin-bottom: 0; }
+.flow-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .58rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.flow-am .flow-num { color: var(--gold); }
+.flow-pm .flow-num { color: var(--rust-soft); }
+.flow-text { flex: 1; }
+.flow-am .flow-text { color: #3a2e18; }
+.flow-pm .flow-text { color: rgba(245,240,230,.92); }
+.week {
+  background: var(--bg-soft);
+  border-radius: 12px;
+  padding: 1rem .75rem;
+  margin-bottom: 1.5rem;
+}
+.week-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  margin-bottom: .65rem;
+  text-align: center;
+}
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .25rem;
+}
+.day {
+  text-align: center;
+  padding: .5rem .15rem;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  align-items: center;
+}
+.day-name { font-size: .6rem; color: var(--ink-mute); font-weight: 500; }
+.day-pill {
+  width: 100%;
+  padding: .25rem .1rem;
+  border-radius: 4px;
+  font-size: .58rem;
+}
+.pill-diff { background: rgba(184,92,58,.18); color: var(--rust); }
+.pill-aha { background: rgba(122,138,94,.2); color: var(--sage); }
+.pill-rest { background: var(--bg-warm); color: var(--ink-mute); }
+.ingredients-title {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: .85rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.ingredients-title::before {
+  content: "";
+  width: 4px;
+  height: 14px;
+  background: var(--rust);
+  border-radius: 2px;
+}
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  margin-bottom: 1.5rem;
+}
+.ingredient {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .75rem .85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.ing-icon {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: .8rem;
+  flex-shrink: 0;
+}
+.ing-vc { background: rgba(168,133,74,.2); color: var(--gold); }
+.ing-a  { background: rgba(184,92,58,.2); color: var(--rust); }
+.ing-aha{ background: rgba(122,138,94,.2); color: var(--sage); }
+.ing-nia{ background: rgba(96,128,148,.2); color: #4a6e88; }
+.ing-cer{ background: rgba(180,150,110,.25); color: #8a6b3e; }
+.ing-info { flex: 1; min-width: 0; }
+.ing-name {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 600;
+  font-size: .88rem;
+}
+.ing-role {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .65rem;
+  color: var(--ink-mute);
+  margin-top: .15rem;
+}
+.ing-when {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  flex-shrink: 0;
+  padding: .25rem .45rem;
+  border-radius: 4px;
+  background: var(--bg-soft);
+  color: var(--ink-soft);
+}
+.targets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+.target {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .85rem;
+  text-align: center;
+}
+.target-icon {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--rust);
+  margin-bottom: .35rem;
+}
+.target-name {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 600;
+  font-size: .82rem;
+  margin-bottom: .15rem;
+}
+.target-note {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .6rem;
+  color: var(--ink-mute);
+}
+.rules {
+  background: var(--night);
+  color: #f5f0e6;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.rules-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem;
+  letter-spacing: .15em;
+  color: var(--rust-soft);
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+}
+.rule {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  font-size: .8rem;
+  line-height: 1.5;
+  margin-bottom: .45rem;
+  color: rgba(245,240,230,.9);
+}
+.rule:last-child { margin-bottom: 0; }
+.rule-mark { color: var(--rust-soft); font-weight: 600; flex-shrink: 0; }
+.rule strong { color: #fff; font-weight: 600; }
+
+/* SOP */
+.sop-block {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.sop-header {
+  padding: 1.1rem 1.2rem;
+  border-bottom: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+.sop-am .sop-header { background: linear-gradient(135deg, #fef6e4 0%, #faf0d4 100%); }
+.sop-pm-a .sop-header { background: linear-gradient(135deg, #2a2f3a 0%, #1f2426 100%); color: #f5f0e6; }
+.sop-pm-b .sop-header { background: linear-gradient(135deg, #3a2826 0%, #2a1f1c 100%); color: #f5e6e0; }
+.sop-time {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.sop-info { flex: 1; }
+.sop-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  letter-spacing: .15em;
+  color: var(--gold);
+  margin-bottom: .2rem;
+}
+.sop-pm-a .sop-label { color: var(--rust-soft); }
+.sop-pm-b .sop-label { color: #d4a08a; }
+.sop-desc {
+  font-family: "Noto Serif TC", serif;
+  font-size: .82rem;
+  font-weight: 500;
+}
+.sop-pm-a .sop-desc, .sop-pm-b .sop-desc { color: rgba(245,240,230,.85); }
+.sop-steps { list-style: none; counter-reset: step; padding: .5rem 0; }
+.sop-step {
+  counter-increment: step;
+  padding: .85rem 1.2rem;
+  border-bottom: 1px solid var(--line-soft);
+  display: flex;
+  gap: .9rem;
+  align-items: flex-start;
+}
+.sop-step:last-child { border-bottom: none; }
+.sop-step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--rust);
+  background: var(--bg-soft);
+  padding: .25rem .45rem;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.sop-step-content { flex: 1; }
+.sop-step-name {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 600;
+  font-size: .94rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.sop-step-detail {
+  font-family: "Noto Serif TC", serif;
+  font-size: .8rem;
+  color: var(--ink-soft);
+  margin-top: .25rem;
+  line-height: 1.55;
+}
+.sop-step-wait {
+  display: inline-block;
+  margin-top: .35rem;
+  padding: .15rem .5rem;
+  background: rgba(168,133,74,.15);
+  color: var(--gold);
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  font-weight: 600;
+}
+.sop-step-detail strong { color: var(--ink); font-weight: 600; }
+.sop-step-detail em {
+  font-style: normal;
+  background: linear-gradient(transparent 60%, rgba(184,92,58,.18) 60%);
+  padding: 0 2px;
+}
+.sop-intro {
+  background: var(--bg-card);
+  padding: 1.1rem 1.15rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.25rem;
+  font-size: .88rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+.sop-intro strong { color: var(--ink); font-weight: 600; }
+.sop-intro em {
+  font-style: normal;
+  background: linear-gradient(transparent 60%, rgba(184,92,58,.15) 60%);
+  padding: 0 2px;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem;
+  margin: 1.5rem 1.25rem 0;
+  padding: 1rem;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.stat { text-align: center; position: relative; }
+.stat:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -.25rem;
+  top: 15%; bottom: 15%;
+  width: 1px;
+  background: var(--line);
+}
+.stat-num {
+  font-family: "Fraunces", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: block;
+  line-height: 1;
+}
+.stat-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: .4rem;
+}
+.progress-wrap {
+  margin: 1rem 1.25rem 0;
+  background: var(--bg-card);
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  letter-spacing: .1em;
+  color: var(--ink-mute);
+  margin-bottom: .55rem;
+  text-transform: uppercase;
+}
+.progress-label .pct { color: var(--rust); font-weight: 600; }
+.progress-bar { height: 4px; background: var(--line); border-radius: 100px; overflow: hidden; }
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--rust));
+  border-radius: 100px;
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+}
+.batch {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: opacity .3s;
+}
+.batch.completed { opacity: .55; }
+.batch-header {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+}
+.batch.completed .batch-header { background: var(--done-bg); }
+.batch-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  color: var(--ink-mute);
+  font-weight: 500;
+  background: var(--bg-soft);
+  padding: .22rem .55rem;
+  border-radius: 4px;
+}
+.batch.completed .batch-num { background: rgba(255,255,255,.5); color: var(--done-ink); }
+.batch-info { flex: 1; }
+.batch-title {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.batch-channel {
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  color: var(--ink-mute);
+  margin-top: .15rem;
+}
+.batch-total {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--rust);
+  white-space: nowrap;
+}
+.batch.completed .batch-total { color: var(--done-ink); }
+.items { padding: .35rem 0; }
+.item-wrap { border-bottom: 1px solid var(--line-soft); }
+.item-wrap:last-child { border-bottom: none; }
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: .85rem;
+  padding: .9rem 1.2rem;
+  cursor: pointer;
+  user-select: none;
+}
+.item:active { background: var(--bg-soft); }
+.checkbox {
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+}
+.item.done .checkbox { background: var(--rust); border-color: var(--rust); }
+.item.done .checkbox::after {
+  content: "";
+  width: 6px; height: 11px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg) translate(-1px,-1px);
+}
+.item-content { flex: 1; min-width: 0; }
+.item-row {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+}
+.item-name {
+  font-size: .93rem;
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+}
+.item.done .item-name {
+  text-decoration: line-through;
+  color: var(--ink-mute);
+}
+.item-toggle {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  color: var(--ink-mute);
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
+  transition: transform .25s;
+}
+.item.expanded .item-toggle { transform: rotate(45deg); }
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .75rem;
+  margin-top: .3rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .7rem;
+  color: var(--ink-mute);
+}
+.item-spec { color: var(--ink-soft); }
+.item-price { font-weight: 600; color: var(--rust); }
+.item.done .item-price { color: var(--ink-mute); }
+.item-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .35s ease;
+  background: var(--bg-soft);
+}
+.item-wrap.expanded .item-detail { max-height: 700px; }
+.item-detail-inner {
+  padding: 1rem 1.2rem 1.1rem 3.2rem;
+  font-size: .85rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+.item-detail-inner p { margin-bottom: .5rem; }
+.item-detail-inner p:last-child { margin-bottom: 0; }
+.item-detail-inner strong { color: var(--ink); font-weight: 600; }
+.item-detail-inner em {
+  font-style: normal;
+  background: linear-gradient(transparent 60%, rgba(184,92,58,.18) 60%);
+  padding: 0 2px;
+}
+.detail-tag {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .65rem;
+  background: var(--bg-card);
+  color: var(--ink-soft);
+  padding: .15rem .5rem;
+  border-radius: 4px;
+  margin: 0 .3rem .3rem 0;
+  border: 1px solid var(--line);
+}
+.view { display: none; }
+.view.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.view.active > * { animation: fadeUp .4s ease backwards; }
+.view.active > *:nth-child(1) { animation-delay: 0s; }
+.view.active > *:nth-child(2) { animation-delay: .05s; }
+.view.active > *:nth-child(3) { animation-delay: .1s; }
+.reset-section { text-align: center; margin-top: 2.5rem; padding: 0 1.25rem; }
+.reset-btn {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink-mute);
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  padding: .65rem 1.3rem;
+  border-radius: 100px;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.25rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: .68rem;
+  color: var(--ink-mute);
+}
+footer span {
+  display: block;
+  font-style: italic;
+  font-family: "Fraunces", serif;
+  font-size: .85rem;
+  color: var(--ink-soft);
+  margin-top: .5rem;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">SKINCARE PROTOCOL · 2026</div>
+  <h1><strong>混合肌</strong><em>保養攻略</em></h1>
+  <p>男性混合肌・PIH 痘印淡化・夏季手腕濕疹預防</p>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-view="poster">一圖流</button>
+  <button class="tab" data-view="sop">SOP 流程</button>
+  <button class="tab" data-view="shop">採購清單</button>
+</div>
+
+<!-- ============ POSTER ============ -->
+<div class="view active" id="view-poster">
+
+<div class="poster">
+  <div class="poster-eyebrow">AT A GLANCE</div>
+  <div class="poster-title">一張圖看懂<em>整套保養</em></div>
+
+  <div class="flow">
+    <div class="flow-col flow-am">
+      <div class="flow-time">AM</div>
+      <div class="flow-tag">EVERY DAY</div>
+      <div class="flow-step"><span class="flow-num">01</span><span class="flow-text">CosRx 洗面乳</span></div>
+      <div class="flow-step"><span class="flow-num">02</span><span class="flow-text">Maelove Vit C</span></div>
+      <div class="flow-step"><span class="flow-num">03</span><span class="flow-text">CeraVe 眼霜</span></div>
+      <div class="flow-step"><span class="flow-num">04</span><span class="flow-text">LRP 多容安乳液</span></div>
+      <div class="flow-step"><span class="flow-num">05</span><span class="flow-text">Biore 防曬</span></div>
+      <div class="flow-step"><span class="flow-num">06</span><span class="flow-text">Cicaplast 唇膏</span></div>
+    </div>
+    <div class="flow-col flow-pm">
+      <div class="flow-time">PM</div>
+      <div class="flow-tag">隔晚輪用</div>
+      <div class="flow-step"><span class="flow-num">01</span><span class="flow-text">CosRx 洗面乳</span></div>
+      <div class="flow-step"><span class="flow-num">02</span><span class="flow-text">臉乾透 5–10 分</span></div>
+      <div class="flow-step"><span class="flow-num">03</span><span class="flow-text">Differin 或 杏仁酸</span></div>
+      <div class="flow-step"><span class="flow-num">04</span><span class="flow-text">Multi-Peptide 眼精華</span></div>
+      <div class="flow-step"><span class="flow-num">05</span><span class="flow-text">CeraVe 修護乳</span></div>
+      <div class="flow-step"><span class="flow-num">06</span><span class="flow-text">唇膏 + 身體乳</span></div>
+    </div>
+  </div>
+
+  <div class="week">
+    <div class="week-title">週排程・PM</div>
+    <div class="week-grid">
+      <div class="day"><span class="day-name">一</span><span class="day-pill pill-diff">A 酸</span></div>
+      <div class="day"><span class="day-name">二</span><span class="day-pill pill-aha">杏仁</span></div>
+      <div class="day"><span class="day-name">三</span><span class="day-pill pill-diff">A 酸</span></div>
+      <div class="day"><span class="day-name">四</span><span class="day-pill pill-aha">杏仁</span></div>
+      <div class="day"><span class="day-name">五</span><span class="day-pill pill-diff">A 酸</span></div>
+      <div class="day"><span class="day-name">六</span><span class="day-pill pill-aha">杏仁</span></div>
+      <div class="day"><span class="day-name">日</span><span class="day-pill pill-rest">休</span></div>
+    </div>
+  </div>
+
+  <div class="ingredients-title">五大活性成分</div>
+  <div class="ingredients">
+    <div class="ingredient">
+      <div class="ing-icon ing-vc">VC</div>
+      <div class="ing-info">
+        <div class="ing-name">維他命 C</div>
+        <div class="ing-role">抗氧化 · 抑制黑色素</div>
+      </div>
+      <div class="ing-when">AM</div>
+    </div>
+    <div class="ingredient">
+      <div class="ing-icon ing-a">A</div>
+      <div class="ing-info">
+        <div class="ing-name">Adapalene 第三代 A 酸</div>
+        <div class="ing-role">代謝粉刺 · 淡化痘印</div>
+      </div>
+      <div class="ing-when">PM·一三五</div>
+    </div>
+    <div class="ingredient">
+      <div class="ing-icon ing-aha">AHA</div>
+      <div class="ing-info">
+        <div class="ing-name">杏仁酸</div>
+        <div class="ing-role">化學去角質 · 改善皮脂絲</div>
+      </div>
+      <div class="ing-when">PM·二四六</div>
+    </div>
+    <div class="ingredient">
+      <div class="ing-icon ing-nia">B3</div>
+      <div class="ing-info">
+        <div class="ing-name">菸鹼醯胺</div>
+        <div class="ing-role">抗發炎 · 控油 · 屏障</div>
+      </div>
+      <div class="ing-when">早晚</div>
+    </div>
+    <div class="ingredient">
+      <div class="ing-icon ing-cer">CER</div>
+      <div class="ing-info">
+        <div class="ing-name">神經醯胺</div>
+        <div class="ing-role">屏障修護 · 鎖水</div>
+      </div>
+      <div class="ing-when">早晚</div>
+    </div>
+  </div>
+
+  <div class="ingredients-title">主攻四大目標</div>
+  <div class="targets">
+    <div class="target">
+      <div class="target-icon">PIH</div>
+      <div class="target-name">痘印淡化</div>
+      <div class="target-note">8–12 週見效</div>
+    </div>
+    <div class="target">
+      <div class="target-icon">Pore</div>
+      <div class="target-name">閉鎖粉刺</div>
+      <div class="target-note">已大幅改善</div>
+    </div>
+    <div class="target">
+      <div class="target-icon">Lip</div>
+      <div class="target-name">下唇修護</div>
+      <div class="target-note">日夜雙管</div>
+    </div>
+    <div class="target">
+      <div class="target-icon">Body</div>
+      <div class="target-name">手腕濕疹</div>
+      <div class="target-note">沐浴乳是關鍵</div>
+    </div>
+  </div>
+
+  <div class="rules">
+    <div class="rules-title">三條鐵則</div>
+    <div class="rule"><span class="rule-mark">01</span><div>杏仁酸與 Differin <strong>永遠隔晚</strong>輪用，從不同晚使用。</div></div>
+    <div class="rule"><span class="rule-mark">02</span><div>Differin 上臉前<strong>務必等乾 5–10 分鐘</strong>，濕臉會大幅增加刺激。</div></div>
+    <div class="rule"><span class="rule-mark">03</span><div>洗澡後 <strong>3 分鐘內</strong>擦身體乳，比所有產品選擇加起來都重要。</div></div>
+  </div>
+</div>
+
+</div><!-- /poster -->
+
+
+<!-- ============ SOP ============ -->
+<div class="view" id="view-sop">
+
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <h2>每日流程</h2>
+  </div>
+
+  <div class="sop-intro">
+    AM 與 PM 分工明確：<strong>早上強化抗氧化與防曬</strong>，晚上做主動修護。<em>核心原則：杏仁酸與 Differin 永遠隔晚輪用，從不同晚使用。</em>
+  </div>
+
+  <div class="sop-block sop-am">
+    <div class="sop-header">
+      <span class="sop-time">AM</span>
+      <div class="sop-info">
+        <div class="sop-label">EVERY MORNING</div>
+        <div class="sop-desc">早晨流程・約 6 分鐘</div>
+      </div>
+    </div>
+    <ol class="sop-steps">
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">30 秒打泡 + 30 秒清潔 + 沖淨。水溫 ≤ 37°C。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Maelove Glow Maker</div><div class="sop-step-detail">3–4 滴薄推全臉。<strong>避開眼周 0.5 cm</strong>。</div><span class="sop-step-wait">WAIT 90 秒</span></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CeraVe Eye Repair Cream</div><div class="sop-step-detail">無名指輕點眼下、眼尾。米粒量。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">LRP 多容安舒緩濕潤乳液</div><div class="sop-step-detail">一元硬幣量薄推全臉，T 字減半。</div><span class="sop-step-wait">WAIT 60 秒</span></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Biore 含水防曬舒芙蕾霜</div><div class="sop-step-detail">兩指長量。臉、耳後、頸前都要擦。<em>外出每 3 小時補擦</em>。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">LRP Cicaplast Lèvres 唇膏</div><div class="sop-step-detail">下唇厚塗。出門前最後一步。</div></div></li>
+    </ol>
+  </div>
+
+  <div class="sop-block sop-pm-a">
+    <div class="sop-header">
+      <span class="sop-time">PM·A</span>
+      <div class="sop-info">
+        <div class="sop-label">DIFFERIN NIGHT · MON / WED / FRI</div>
+        <div class="sop-desc">A 酸夜・約 5 分鐘</div>
+      </div>
+    </div>
+    <ol class="sop-steps">
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">先卸防曬。流汗多時可二次清潔。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">完全擦乾，等臉乾透</div><div class="sop-step-detail"><strong>濕臉上 Differin 會大幅增加刺激</strong>，務必等乾。</div><span class="sop-step-wait">WAIT 5–10 分鐘</span></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">兩頰先薄擦 CeraVe（三明治法）</div><div class="sop-step-detail">敏感區先有保濕緩衝，可降低 Differin 紅腫機率。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Differin 0.1% 點塗</div><div class="sop-step-detail">米粒量。<em>避眼周 1 cm，避口周 0.5 cm</em>。額頭、鼻翼、下顎、嘴角痘印區為主。</div><span class="sop-step-wait">WAIT 5–10 分鐘</span></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Multi-Peptide Eye Serum</div><div class="sop-step-detail">無名指輕點。長期增厚薄皮、消浮腫。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CeraVe 全效修護乳（厚塗）</div><div class="sop-step-detail">第二層 buffer。兩頰可加厚一倍。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">唇部 + 身體乳收尾</div><div class="sop-step-detail">Cicaplast Lèvres 厚塗。CeraVe 全身乳，手腕加厚。</div></div></li>
+    </ol>
+  </div>
+
+  <div class="sop-block sop-pm-b">
+    <div class="sop-header">
+      <span class="sop-time">PM·B</span>
+      <div class="sop-info">
+        <div class="sop-label">MANDELIC NIGHT · TUE / THU / SAT</div>
+        <div class="sop-desc">杏仁酸夜・約 5 分鐘</div>
+      </div>
+    </div>
+    <ol class="sop-steps">
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">徹底卸下防曬與一日髒污。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">完全擦乾</div><div class="sop-step-detail">濕臉上酸會增加滲透與刺激。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">The Ordinary Mandelic Acid 10%</div><div class="sop-step-detail">2 滴薄推全臉。鼻翼、PIH 區可加強第二層。</div><span class="sop-step-wait">WAIT 15–20 分鐘</span></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Multi-Peptide Eye Serum</div><div class="sop-step-detail">輕點眼下。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CeraVe 全效修護乳</div><div class="sop-step-detail">一層即可，杏仁酸夜不需三明治。</div></div></li>
+      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">唇部 + 身體乳收尾</div><div class="sop-step-detail">同 PM·A。</div></div></li>
+    </ol>
+  </div>
+
+  <div class="sop-intro">
+    <strong>刮鬍當晚一律改純保濕</strong>，跳過酸與 Differin。手腕濕疹發作時暫停 T 字以外的酸 1 週。
+  </div>
+</div>
+
+</div><!-- /sop -->
+
+
+<!-- ============ SHOP ============ -->
+<div class="view" id="view-shop">
+
+<div class="stats">
+  <div class="stat">
+    <span class="stat-num" id="totalCount">0/12</span>
+    <div class="stat-label">品項</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num">7.8K</span>
+    <div class="stat-label">總額 NT$</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num">4</span>
+    <div class="stat-label">通路</div>
+  </div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span>採購進度</span>
+    <span class="pct" id="progressPct">0%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-head">
+    <span class="section-num">02</span>
+    <h2>採購清單</h2>
+  </div>
+
+  <!-- Batch 1 -->
+  <div class="batch" data-batch="1">
+    <div class="batch-header">
+      <span class="batch-num">第一單</span>
+      <div class="batch-info">
+        <div class="batch-title">蝦皮商城・巴黎丁</div>
+        <div class="batch-channel">SHOPEE · 法國直送水貨</div>
+      </div>
+      <div class="batch-total">NT$1,500</div>
+    </div>
+    <div class="items">
+      <div class="item-wrap">
+        <div class="item" data-id="1">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">LRP Cicaplast Lèvres 唇膏</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">7.5ml · 唇部修護</span><span class="item-price">NT$269</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：含 5% 泛醇 + 雪亞脂的醫療級無香唇膏，<em>修護下唇明顯起皮的縱紋</em>。</p>
+          <p><strong>使用</strong>：日夜皆可。AM 防曬後最後一步、PM 保養收尾、白天乾燥隨時補。</p>
+          <p><span class="detail-tag">無香</span><span class="detail-tag">無酒精</span></p>
+        </div></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" data-id="2">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">LRP 多容安舒緩濕潤乳液</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">40ml · AM 乳液</span><span class="item-price">NT$619</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：早上保濕主力。含<strong>菸鹼醯胺 + 神經醯胺 NP</strong>，質地清爽<em>不影響防曬延展與上妝</em>。</p>
+          <p><strong>使用</strong>：Vit C 後等 90 秒再上。一元硬幣量、T 字減半。</p>
+          <p><span class="detail-tag">敏感肌</span><span class="detail-tag">含菸鹼醯胺</span></p>
+        </div></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" data-id="3">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">LRP Lipikar Syndet AP+ 沐浴乳</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">400ml · 醫學級</span><span class="item-price">NT$629</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：<em>手腕濕疹預防最關鍵單品</em>。一般沐浴乳清潔力過強會直接誘發濕疹。</p>
+          <p><strong>使用</strong>：每日全身洗。水溫 ≤ 37°C，洗澡時間 ≤ 8 分鐘。洗完<em>3 分鐘內</em>立刻塗身體乳。</p>
+          <p><span class="detail-tag">NEA 認證</span><span class="detail-tag">含菸鹼醯胺</span></p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Batch 2 (merged momo) -->
+  <div class="batch" data-batch="2">
+    <div class="batch-header">
+      <span class="batch-num">第二單</span>
+      <div class="batch-info">
+        <div class="batch-title">momo 購物網</div>
+        <div class="batch-channel">本週・一單買齊主力</div>
+      </div>
+      <div class="batch-total">NT$3,264</div>
+    </div>
+    <div class="items">
+      <div class="item-wrap">
+        <div class="item" data-id="4">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">CeraVe 長效清爽保濕乳（雙入）</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">562ml × 2 · 全身用</span><span class="item-price">NT$1,189</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：全身日常保濕。含<strong>三神經醯胺 + HA</strong>，無香、好推開、台灣濕熱不悶。</p>
+          <p><strong>使用</strong>：洗澡後 3 分鐘內擦全身。<em>手腕用同支加厚塗即可</em>。</p>
+          <p><strong>備註</strong>：有 Costco 卡的話 Costco 同價更穩定。</p>
+          <p><span class="detail-tag">三神經醯胺</span><span class="detail-tag">無香</span></p>
+        </div></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" data-id="5">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">CeraVe Eye Repair Cream 眼霜</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">14ml · AM 眼霜</span><span class="item-price">NT$535</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：含<strong>菸鹼醯胺 + 三神經醯胺</strong>，主攻<em>強化薄皮屏障</em>——這是血管型黑眼圈唯一能改善的部分。</p>
+          <p><strong>使用</strong>：AM 上 Vit C 後、乳液前。米粒量。</p>
+          <p><strong>預期</strong>：保養品對血管型黑眼圈頂多視覺改善 10–25%，<em>不能根治</em>。</p>
+          <p><span class="detail-tag">含菸鹼醯胺</span><span class="detail-tag">薄皮修護</span></p>
+        </div></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" data-id="6">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">The Ordinary Mandelic Acid 10% + HA</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">30ml · 杏仁酸</span><span class="item-price">NT$390</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：AHA 化學去角質，<em>淡化痘印、改善鼻頭皮脂絲</em>。分子量 152 Da、滲透慢，亞洲膚質耐受度佳。</p>
+          <p><strong>使用</strong>：PM·B 夜（二四六）。2 滴薄推全臉，等 15–20 分鐘再上保濕。</p>
+          <p><strong>絕對禁忌</strong>：<em>不可與 Differin 同晚使用</em>。</p>
+          <p><span class="detail-tag">隔晚輪用</span><span class="detail-tag">PIH 淡化</span></p>
+        </div></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" data-id="7">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">The Ordinary Multi-Peptide Eye Serum</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">15ml · PM 眼精華</span><span class="item-price">NT$1,150</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：<strong>多胜肽 + 咖啡因 + EGCG + 菸鹼醯胺</strong>全方位配方，長期增厚眼周薄皮、消淺層浮腫。</p>
+          <p><strong>使用</strong>：PM 用，乳霜前。無名指輕點。</p>
+          <p><span class="detail-tag">胜肽</span><span class="detail-tag">咖啡因</span></p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Batch 3: iHerb -->
+  <div class="batch" data-batch="3">
+    <div class="batch-header">
+      <span class="batch-num">第三單</span>
+      <div class="batch-info">
+        <div class="batch-title">iHerb</div>
+        <div class="batch-channel">第 2 週・活性成分</div>
+      </div>
+      <div class="batch-total">NT$1,640</div>
+    </div>
+    <div class="items">
+      <div class="item-wrap">
+        <div class="item" data-id="8">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">CosRx Low pH Cleanser ×2</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">150ml × 2 · 早晚通用</span><span class="item-price">NT$660</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：早晚通用洗面乳。<strong>pH 5.5 弱酸性</strong>、含微量 BHA + 茶樹油。</p>
+          <p><strong>取代</strong>：CeraVe 雙瓶系統，一條搞定。</p>
+          <p><strong>買兩條</strong>：iHerb 湊免運門檻、備庫存可用 4 個月。</p>
+          <p><span class="detail-tag">弱酸 pH 5.5</span></p>
+        </div></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" data-id="9">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">Differin Adapalene 0.1% Gel</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">45g · PM 主力</span><span class="item-price">NT$680</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：第三代 A 酸，<em>對閉鎖性粉刺與 PIH 痘印雙效實證最強</em>。整套保養中 ROI 最高的單品。</p>
+          <p><strong>使用</strong>：PM·A 夜（一三五）。臉乾透 5–10 分鐘後米粒量點塗，避眼周 1 cm。</p>
+          <p><strong>過渡期</strong>：前 2–4 週可能有微脫屑（retinization），保濕厚塗即可。</p>
+          <p><span class="detail-tag">隔晚輪用</span><span class="detail-tag">PIH 主攻</span></p>
+        </div></div>
+      </div>
+      <div class="item-wrap">
+        <div class="item" data-id="10">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">Aquaphor Healing Ointment</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">14g · 萬用修護</span><span class="item-price">NT$300</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：iHerb 比台灣便宜很多的萬用修護膏。</p>
+          <p><strong>應用</strong>：手指乾裂、刮鬍小傷口、Differin 燒紅區點塗、唇部夜間封層。<em>一條用半年</em>。</p>
+          <p><span class="detail-tag">萬用</span><span class="detail-tag">無香</span></p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Batch 4: Amazon US -->
+  <div class="batch" data-batch="4">
+    <div class="batch-header">
+      <span class="batch-num">第四單</span>
+      <div class="batch-info">
+        <div class="batch-title">Amazon US</div>
+        <div class="batch-channel">第 3 週・直送台灣</div>
+      </div>
+      <div class="batch-total">NT$1,400</div>
+    </div>
+    <div class="items">
+      <div class="item-wrap">
+        <div class="item" data-id="11">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">Maelove Glow Maker</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">30ml · 15% Vit C</span><span class="item-price">NT$1,400</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：<strong>15% L-AA + 1% VE + 0.5% 阿魏酸</strong>，配方等同 SkinCeuticals C E Ferulic 但<em>只要四分之一價</em>。</p>
+          <p><strong>使用</strong>：AM 洗臉後第一支精華。3–4 滴薄推全臉。等 90 秒再上眼霜與乳液。</p>
+          <p><strong>採購</strong>：Amazon US 直送台灣，運費約 USD$10、海運 7–14 天到貨。<em>單買不超過 USD$50 免關稅</em>。</p>
+          <p><strong>保存</strong>：開封後 3–4 個月用完，瓶身變橘黃色丟掉。冷藏可延至 6 個月。</p>
+          <p><span class="detail-tag">15% L-AA</span><span class="detail-tag">阿魏酸</span></p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Already owned -->
+  <div class="batch" data-batch="5">
+    <div class="batch-header">
+      <span class="batch-num">已有</span>
+      <div class="batch-info">
+        <div class="batch-title">無需採購・繼續使用</div>
+        <div class="batch-channel">CURRENT</div>
+      </div>
+      <div class="batch-total">—</div>
+    </div>
+    <div class="items">
+      <div class="item-wrap">
+        <div class="item" data-id="12">
+          <div class="checkbox"></div>
+          <div class="item-content">
+            <div class="item-row"><div class="item-name">Biore 含水防曬舒芙蕾霜</div><span class="item-toggle">+</span></div>
+            <div class="item-meta"><span class="item-spec">70g · SPF50+ PA++++</span><span class="item-price">已有</span></div>
+          </div>
+        </div>
+        <div class="item-detail"><div class="item-detail-inner">
+          <p><strong>用途</strong>：日系防曬代表作，<em>蓬鬆水感、不黏</em>，台北濕熱適用。</p>
+          <p><strong>使用</strong>：AM 最後一步。兩指長量。<em>外出每 3 小時補擦</em>。</p>
+          <p><strong>注意</strong>：長波 UVA 防護不如 LRP UVMune 400。<em>長時間戶外</em>建議改 UVMune 加強。</p>
+          <p><strong>關鍵</strong>：Vit C + Differin + 杏仁酸都會增加 UV 敏感，沒補擦等於沒擦。</p>
+          <p><span class="detail-tag">水感</span><span class="detail-tag">不黏</span></p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="reset-section">
+  <button class="reset-btn" id="resetBtn">RESET PROGRESS</button>
+</div>
+
+<footer>
+  Updated · 2026
+  <span>"產品只是工具，習慣才是真正改變膚況的因子。"</span>
+</footer>
+
+</div><!-- /shop -->
+
+<script>
+const STORAGE_KEY = 'skincare-checklist-v2';
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch (e) { return {}; }
+}
+function saveState(state) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+}
+
+let state = loadState();
+if (Object.keys(state).length === 0) {
+  state = { '1': true, '2': true, '3': true, '12': true };
+  saveState(state);
+}
+
+function applyState() {
+  const items = document.querySelectorAll('.item[data-id]');
+  items.forEach(item => {
+    const id = item.dataset.id;
+    if (state[id]) item.classList.add('done');
+    else item.classList.remove('done');
+  });
+  document.querySelectorAll('.batch').forEach(batch => {
+    const allItems = batch.querySelectorAll('.item[data-id]');
+    const allDone = Array.from(allItems).every(it => state[it.dataset.id]);
+    if (allDone && allItems.length > 0) batch.classList.add('completed');
+    else batch.classList.remove('completed');
+  });
+  const total = items.length;
+  const done = Object.values(state).filter(v => v).length;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('totalCount').textContent = `${done}/${total}`;
+}
+
+document.querySelectorAll('.item[data-id]').forEach(item => {
+  const checkbox = item.querySelector('.checkbox');
+  checkbox.addEventListener('click', e => {
+    e.stopPropagation();
+    const id = item.dataset.id;
+    state[id] = !state[id];
+    saveState(state);
+    applyState();
+  });
+  item.addEventListener('click', () => {
+    const wrap = item.closest('.item-wrap');
+    const expanded = wrap.classList.toggle('expanded');
+    item.classList.toggle('expanded', expanded);
+  });
+});
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('view-' + tab.dataset.view).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (confirm('確定要重置所有採購進度嗎？')) {
+    state = {};
+    saveState(state);
+    applyState();
+  }
+});
+
+applyState();
+</script>
+
+</body>
+</html>
