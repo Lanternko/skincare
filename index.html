@@ -631,6 +631,29 @@ h1 em { font-style: italic; font-weight: 400; display: block; margin-top: .15em;
   user-select: none;
 }
 .item:active { background: var(--bg-soft); }
+.sop-step-thumb {
+  width: 40px; height: 40px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  object-fit: contain;
+  padding: 3px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  box-shadow: 0 1px 1px rgba(26,26,26,.04);
+}
+.item-thumb {
+  width: 54px; height: 54px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  object-fit: contain;
+  padding: 4px;
+  flex-shrink: 0;
+  margin-top: -2px;
+  box-shadow: 0 1px 2px rgba(26,26,26,.04);
+}
+.item.done .item-thumb { opacity: .55; }
 .checkbox {
   width: 22px; height: 22px;
   border: 1.5px solid var(--line);
@@ -919,12 +942,12 @@ footer span {
       </div>
     </div>
     <ol class="sop-steps">
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">30 秒打泡 + 30 秒清潔 + 沖淨。水溫 ≤ 37°C。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Maelove Glow Maker</div><div class="sop-step-detail">3–4 滴薄推全臉。<strong>避開眼周 0.5 cm</strong>。</div><span class="sop-step-wait">WAIT 90 秒</span></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CeraVe Eye Repair Cream</div><div class="sop-step-detail">無名指輕點眼下、眼尾。米粒量。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">LRP 多容安舒緩濕潤乳液</div><div class="sop-step-detail">一元硬幣量薄推全臉，T 字減半。</div><span class="sop-step-wait">WAIT 60 秒</span></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Biore 含水防曬舒芙蕾霜</div><div class="sop-step-detail">兩指長量。臉、耳後、頸前都要擦。<em>外出每 3 小時補擦</em>。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">LRP Cicaplast Lèvres 唇膏</div><div class="sop-step-detail">下唇厚塗。出門前最後一步。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/01-cosrx-low-ph-cleanser.jpg" alt="CosRx Low pH" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">30 秒打泡 + 30 秒清潔 + 沖淨。水溫 ≤ 37°C。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/02-maelove-glow-maker.jpg" alt="Maelove Glow Maker" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">Maelove Glow Maker</div><div class="sop-step-detail">3–4 滴薄推全臉。<strong>避開眼周 0.5 cm</strong>。</div><span class="sop-step-wait">WAIT 90 秒</span></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/10-cerave-eye-repair-cream.jpg" alt="CeraVe Eye Repair" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">CeraVe Eye Repair Cream</div><div class="sop-step-detail">無名指輕點眼下、眼尾。米粒量。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/05-lrp-toleriane-lotion.jpg" alt="LRP 多容安乳液" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">LRP 多容安舒緩濕潤乳液</div><div class="sop-step-detail">一元硬幣量薄推全臉，T 字減半。</div><span class="sop-step-wait">WAIT 60 秒</span></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/16-biore-uv-aqua-rich.jpg" alt="Biore 防曬" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">Biore 含水防曬舒芙蕾霜</div><div class="sop-step-detail">兩指長量。臉、耳後、頸前都要擦。<em>外出每 3 小時補擦</em>。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/08-lrp-cicaplast-levres.png" alt="Cicaplast 唇膏" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">LRP Cicaplast Lèvres 唇膏</div><div class="sop-step-detail">下唇厚塗。出門前最後一步。</div></div></li>
     </ol>
   </div>
 
@@ -937,13 +960,13 @@ footer span {
       </div>
     </div>
     <ol class="sop-steps">
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">先卸防曬。流汗多時可二次清潔。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/01-cosrx-low-ph-cleanser.jpg" alt="CosRx Low pH" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">先卸防曬。流汗多時可二次清潔。</div></div></li>
       <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">完全擦乾，等臉乾透</div><div class="sop-step-detail"><strong>濕臉上 Differin 會大幅增加刺激</strong>，務必等乾。</div><span class="sop-step-wait">WAIT 5–10 分鐘</span></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">兩頰先薄擦 CeraVe（三明治法）</div><div class="sop-step-detail">敏感區先有保濕緩衝，可降低 Differin 紅腫機率。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Differin 0.1% 點塗</div><div class="sop-step-detail">米粒量。<em>避眼周 1 cm，避口周 0.5 cm</em>。額頭、鼻翼、下顎、嘴角痘印區為主。</div><span class="sop-step-wait">WAIT 5–10 分鐘</span></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Multi-Peptide Eye Serum</div><div class="sop-step-detail">無名指輕點。長期增厚薄皮、消浮腫。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CeraVe 全效修護乳（厚塗）</div><div class="sop-step-detail">第二層 buffer。兩頰可加厚一倍。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">唇部 + 身體乳收尾</div><div class="sop-step-detail">Cicaplast Lèvres 厚塗。CeraVe 全身乳，手腕加厚。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/06-cerave-pm-lotion.jpg" alt="CeraVe 全效修護乳" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">兩頰先薄擦 CeraVe（三明治法）</div><div class="sop-step-detail">敏感區先有保濕緩衝，可降低 Differin 紅腫機率。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/03-differin-adapalene.jpg" alt="Differin" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">Differin 0.1% 點塗</div><div class="sop-step-detail">米粒量。<em>避眼周 1 cm，避口周 0.5 cm</em>。額頭、鼻翼、下顎、嘴角痘印區為主。</div><span class="sop-step-wait">WAIT 5–10 分鐘</span></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/11-ordinary-multi-peptide-eye-serum.jpg" alt="Multi-Peptide Eye Serum" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">Multi-Peptide Eye Serum</div><div class="sop-step-detail">無名指輕點。長期增厚薄皮、消浮腫。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/06-cerave-pm-lotion.jpg" alt="CeraVe 全效修護乳" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">CeraVe 全效修護乳（厚塗）</div><div class="sop-step-detail">第二層 buffer。兩頰可加厚一倍。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/08-lrp-cicaplast-levres.png" alt="Cicaplast 唇膏" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">唇部 + 身體乳收尾</div><div class="sop-step-detail">Cicaplast Lèvres 厚塗。CeraVe 全身乳，手腕加厚。</div></div></li>
     </ol>
   </div>
 
@@ -956,12 +979,12 @@ footer span {
       </div>
     </div>
     <ol class="sop-steps">
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">徹底卸下防曬與一日髒污。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/01-cosrx-low-ph-cleanser.jpg" alt="CosRx Low pH" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">CosRx Low pH 洗面乳</div><div class="sop-step-detail">徹底卸下防曬與一日髒污。</div></div></li>
       <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">完全擦乾</div><div class="sop-step-detail">濕臉上酸會增加滲透與刺激。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">The Ordinary Mandelic Acid 10%</div><div class="sop-step-detail">2 滴薄推全臉。鼻翼、PIH 區可加強第二層。</div><span class="sop-step-wait">WAIT 15–20 分鐘</span></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">Multi-Peptide Eye Serum</div><div class="sop-step-detail">輕點眼下。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">CeraVe 全效修護乳</div><div class="sop-step-detail">一層即可，杏仁酸夜不需三明治。</div></div></li>
-      <li class="sop-step"><div class="sop-step-content"><div class="sop-step-name">唇部 + 身體乳收尾</div><div class="sop-step-detail">同 PM·A。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/04-ordinary-mandelic-acid.png" alt="Mandelic Acid 10%" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">The Ordinary Mandelic Acid 10%</div><div class="sop-step-detail">2 滴薄推全臉。鼻翼、PIH 區可加強第二層。</div><span class="sop-step-wait">WAIT 15–20 分鐘</span></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/11-ordinary-multi-peptide-eye-serum.jpg" alt="Multi-Peptide Eye Serum" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">Multi-Peptide Eye Serum</div><div class="sop-step-detail">輕點眼下。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/06-cerave-pm-lotion.jpg" alt="CeraVe 全效修護乳" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">CeraVe 全效修護乳</div><div class="sop-step-detail">一層即可，杏仁酸夜不需三明治。</div></div></li>
+      <li class="sop-step"><img class="sop-step-thumb" src="images/08-lrp-cicaplast-levres.png" alt="Cicaplast 唇膏" loading="lazy"><div class="sop-step-content"><div class="sop-step-name">唇部 + 身體乳收尾</div><div class="sop-step-detail">同 PM·A。</div></div></li>
     </ol>
   </div>
 
@@ -1021,6 +1044,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="1">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/08-lrp-cicaplast-levres.png" alt="LRP Cicaplast Lèvres" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">LRP Cicaplast Lèvres 唇膏</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">7.5ml · 唇部修護</span><span class="item-price">NT$269</span></div>
@@ -1035,6 +1059,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="2">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/05-lrp-toleriane-lotion.jpg" alt="LRP 多容安舒緩濕潤乳液" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">LRP 多容安舒緩濕潤乳液</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">40ml · AM 乳液</span><span class="item-price">NT$619</span></div>
@@ -1049,6 +1074,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="3">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/14-lrp-lipikar-syndet-apm.jpg" alt="LRP Lipikar Syndet AP+ 沐浴乳" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">LRP Lipikar Syndet AP+ 沐浴乳</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">400ml · 醫學級</span><span class="item-price">NT$629</span></div>
@@ -1077,6 +1103,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="4">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/12-cerave-daily-lotion-pump.jpg" alt="CeraVe 長效清爽保濕乳" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">CeraVe 長效清爽保濕乳（雙入）</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">562ml × 2 · 全身用</span><span class="item-price">NT$1,189</span></div>
@@ -1092,6 +1119,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="5">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/10-cerave-eye-repair-cream.jpg" alt="CeraVe Eye Repair Cream" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">CeraVe Eye Repair Cream 眼霜</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">14ml · AM 眼霜</span><span class="item-price">NT$535</span></div>
@@ -1107,6 +1135,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="6">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/04-ordinary-mandelic-acid.png" alt="The Ordinary Mandelic Acid 10% + HA" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">The Ordinary Mandelic Acid 10% + HA</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">30ml · 杏仁酸</span><span class="item-price">NT$390</span></div>
@@ -1122,6 +1151,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="7">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/11-ordinary-multi-peptide-eye-serum.jpg" alt="The Ordinary Multi-Peptide Eye Serum" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">The Ordinary Multi-Peptide Eye Serum</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">15ml · PM 眼精華</span><span class="item-price">NT$1,150</span></div>
@@ -1150,6 +1180,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="8">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/01-cosrx-low-ph-cleanser.jpg" alt="CosRx Low pH Good Morning Cleanser" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">CosRx Low pH Cleanser ×2</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">150ml × 2 · 早晚通用</span><span class="item-price">NT$660</span></div>
@@ -1165,6 +1196,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="9">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/03-differin-adapalene.jpg" alt="Differin Adapalene 0.1% Gel" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">Differin Adapalene 0.1% Gel</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">45g · PM 主力</span><span class="item-price">NT$680</span></div>
@@ -1180,6 +1212,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="10">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/15-aquaphor-healing-ointment.jpg" alt="Aquaphor Healing Ointment" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">Aquaphor Healing Ointment</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">14g · 萬用修護</span><span class="item-price">NT$300</span></div>
@@ -1208,6 +1241,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="11">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/02-maelove-glow-maker.jpg" alt="Maelove Glow Maker" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">Maelove Glow Maker</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">30ml · 15% Vit C</span><span class="item-price">NT$1,400</span></div>
@@ -1238,6 +1272,7 @@ footer span {
       <div class="item-wrap">
         <div class="item" data-id="12">
           <div class="checkbox"></div>
+          <img class="item-thumb" src="images/16-biore-uv-aqua-rich.jpg" alt="Biore UV Aqua Rich Watery Essence" loading="lazy">
           <div class="item-content">
             <div class="item-row"><div class="item-name">Biore 含水防曬舒芙蕾霜</div><span class="item-toggle">+</span></div>
             <div class="item-meta"><span class="item-spec">70g · SPF50+ PA++++</span><span class="item-price">已有</span></div>
